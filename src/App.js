@@ -1,9 +1,10 @@
+import React from 'react';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h2>Bookstore Germany</h2>
+      <h2>Bookstore Verissimo</h2>
     </div>
   );
 }
