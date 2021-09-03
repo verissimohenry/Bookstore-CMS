@@ -23,7 +23,6 @@ A bookstore app where the user can create and remove books as well as browse thr
 - Prop-Types
 - React-Redux
 
-## [Live Link](https://bookstore-necmi-amit.herokuapp.com/)
 
 ## Getting Started
 
