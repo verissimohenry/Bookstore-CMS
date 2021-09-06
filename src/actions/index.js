@@ -1,24 +1,20 @@
-/* eslint no-multiple-empty-lines: [2, {max: 1}] */
-import {
-  CREATE_BOOK,
-  REMOVE_BOOK,
-} from './booksActions';
+/* eslint no-multiple-empty-lines: [2, {max: 0}] */
+import * as actions from './booksActions';
 
-const createBook = (book) => ({
-  type: CREATE_BOOK,
-  book: {
-    bookId: Math.floor(Math.random() * 20),
-    title: book.title,
-    category: book.category,
-  },
-});
-
-const removeBook = (book) => ({
-  type: REMOVE_BOOK,
-  book,
-});
-
-export {
-  createBook,
-  removeBook,
-};
+export const createBook = (title, category) => (
+  {
+    type: actions.CREATE_BOOK,
+    payload: {
+      title,
+      category,
+    },
+  }
+);
+export const removeBook = (bookId) => (
+  {
+    type: actions.REMOVE_BOOK,
+    payload: {
+      bookId,
+    },
+  }
+);
