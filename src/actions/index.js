@@ -1,3 +1,4 @@
+/* eslint no-multiple-empty-lines: [2, {max: 1}] */
 import {
   CREATE_BOOK,
   REMOVE_BOOK,
