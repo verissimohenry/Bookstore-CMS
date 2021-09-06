@@ -1,4 +1,7 @@
-import { CREATE_BOOK, REMOVE_BOOK } from './booksActions';
+import {
+  CREATE_BOOK,
+  REMOVE_BOOK,
+} from './booksActions';
 
 const createBook = (book) => ({
   type: CREATE_BOOK,
@@ -14,4 +17,7 @@ const removeBook = (book) => ({
   book,
 });
 
-export { createBook, removeBook };
+export {
+  createBook,
+  removeBook,
+};
