@@ -9,7 +9,6 @@ export const createBook = (title, category) => (
     },
   }
 );
-
 export const removeBook = (bookId) => (
   {
     type: actions.REMOVE_BOOK,
