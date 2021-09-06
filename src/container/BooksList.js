@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 import Book from '../components/Book';
 
 const BooksList = ({ bookId, title, category }) => (
-  <>
-    <tr>
-      <th>BookId</th>
-      <th>Title</th>
-      <th>Category</th>
-      <Book bookId={bookId} title={title} category={category} />
-    </tr>
-  </>
+  <tr>
+    <th>BookId</th>
+    <th>Title</th>
+    <th>Category</th>
+    <Book bookId={bookId} title={title} category={category} />
+  </tr>
 );
 
 BooksList.propTypes = {
