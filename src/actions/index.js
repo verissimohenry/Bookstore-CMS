@@ -1,3 +1,4 @@
+/* eslint no-multiple-empty-lines: ["error", { "max": 2, "maxEOF": 0 }] */
 import * as actions from './booksActions';
 
 export const createBook = (title, category) => ({
