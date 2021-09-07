@@ -18,9 +18,9 @@ const BooksForm = () => {
         <option value="" selected>
           Choose category
         </option>
-        {categories.forEach((category) => {
-          <option value={category}>{category}</option>;
-        })}
+        {
+          categories.map((e) => <option key={Math.random()} value={e}>{e}</option>)
+        }
       </select>
       <input type="submit" value="Submit" />
     </form>
