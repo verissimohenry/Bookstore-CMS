@@ -1,19 +1,34 @@
 import { CREATE_BOOK, REMOVE_BOOK } from '../actions/booksActions';
 
-const booksReducer = (state = {}, action) => {
-  switch (action.type) {
-    case CREATE_BOOK:
-      return {
-        ...state,
-        bookId: Math.random(),
-        title: action.payload.title,
-        category: action.payload.category,
-      };
-    case REMOVE_BOOK:
-      return state.filter((e) => e.id !== action.payload.bookId);
-    default:
-      return state;
-  }
+const initialState = {
+  books: [
+    {
+      bookId: Math.floor(Math.random() * 20),
+      title: 'The Alchemist',
+      category: 'History',
+    },
+    {
+      bookId: Math.floor(Math.random() * 20),
+      title: 'Into The Wild',
+      category: 'Biography',
+    },
+    {
+      bookId: Math.floor(Math.random() * 20),
+      title: 'Head First JavaScript Programming',
+      category: 'Learning',
+    },
+  ],
 };
 
+const booksReducer = (state = initialState, action) => {
+  if (action.type === CREATE_BOOK) {
+    return { books: state.books };
+  }
+  if (action.type === REMOVE_BOOK) {
+    return { books: state.books };
+  }
+  return state.books;
+};
+
+export { CREATE_BOOK, REMOVE_BOOK };
 export default booksReducer;

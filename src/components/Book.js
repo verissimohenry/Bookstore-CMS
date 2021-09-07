@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,9 +11,14 @@ const Book = ({ bookId, title, category }) => (
 );
 
 Book.propTypes = {
-  bookId: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
+  book: PropTypes.shape({
+    bookId: PropTypes.number,
+    title: PropTypes.string,
+    category: PropTypes.string,
+  }),
+};
+Book.defaultProps = {
+  book: null,
 };
 
 export default Book;
