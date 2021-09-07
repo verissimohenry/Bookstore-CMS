@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import Book from '../components/Book';
 
 const BooksList = ({ bookId, title, category }) => (
-  <table>
-    <th>Book ID</th>
+  <tr>
+    <th>BookId</th>
     <th>Title</th>
-    <th>category</th>
+    <th>Category</th>
     <Book bookId={bookId} title={title} category={category} />
-  </table>
+  </tr>
 );
 
 BooksList.propTypes = {
@@ -19,7 +19,7 @@ BooksList.propTypes = {
 };
 
 BooksList.defaultProps = {
-  bookId: Math.random(),
+  bookId: [],
   title: '',
   category: '',
 };
