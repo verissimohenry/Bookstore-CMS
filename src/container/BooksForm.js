@@ -1,17 +1,28 @@
 import React from 'react';
 
 const BooksForm = () => {
-  const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
+  const categories = [
+    'Action',
+    'Biography',
+    'History',
+    'Horror',
+    'Kids',
+    'Learning',
+    'Sci-Fi',
+  ];
 
   return (
     <form>
-      <input type="text" />
-      <select>
-        {
-            categories.map((e) => <option key={Math.random()} value={e}>{e}</option>)
-          }
+      <input placeholder="Book Title" />
+      <select id="category" name="category">
+        <option value="" selected>
+          Choose category
+        </option>
+        {categories.forEach((category) => {
+          <option value={category}>{category}</option>;
+        })}
       </select>
-      <button type="submit">Submit</button>
+      <input type="submit" value="Submit" />
     </form>
   );
 };
