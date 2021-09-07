@@ -8,12 +8,12 @@ const BooksList = ({ books }) => (
     <th>Book ID</th>
     <th>Title</th>
     <th>category</th>
-    {books.map((book) => (
+    {books.map((books) => (
       <Book
-        key={book.bookId}
-        bookId={book.bookId}
-        title={book.title}
-        category={book.category}
+        key={books.bookId}
+        bookId={books.bookId}
+        title={books.title}
+        category={books.category}
       />
     ))}
   </table>
