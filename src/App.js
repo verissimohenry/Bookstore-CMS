@@ -9,10 +9,6 @@ function App() {
       <h2>BookStore</h2>
       <BooksList />
       <BooksForm />
-      <br />
-      <table>
-        <BooksList />
-      </table>
     </div>
   );
 }

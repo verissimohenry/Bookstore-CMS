@@ -21,6 +21,18 @@ const BooksForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const bookId = Math.random().toString();
+
+    const titleText = document.getElementsByName('BookTitle')[0];
+    if (/^ *$/.test(title)) {
+      titleText.placeholder = 'Book name can\'t be blank';
+      titleText.style.border = '1px solid red';
+      return;
+    }
+    if (title) {
+      titleText.placeholder = 'Book Title';
+      titleText.style.border = 'none';
+    }
+
     const book = {
       bookId,
       title,
@@ -28,7 +40,7 @@ const BooksForm = (props) => {
     };
     props.createBook(book);
     setTitle('');
-    setCategory('');
+    setCategory('Action');
   };
 
   return (
