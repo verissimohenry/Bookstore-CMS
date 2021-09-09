@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import Book from '../components/Book';
@@ -21,6 +20,15 @@ const BooksList = ({ books }) => (
   </table>
 );
 
-const mapStateToProps = (state) => ({ books: state.books });
+BooksList.propTypes = {
+  books: [],
+
+};
+
+BooksList.defaultProps = {
+  books: [],
+
+};
+const mapStateToProps = (state) => ({ books: state.bookReducer });
 
 export default connect(mapStateToProps)(BooksList);
