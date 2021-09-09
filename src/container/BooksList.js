@@ -10,25 +10,27 @@ const BooksList = (props) => {
     removeBook(book);
   };
   return (
-    <>
+    <table>
       <thead>
         <tr>
-          <th>BookId</th>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Action</th>
+          <td>BookId</td>
+          <td>Title</td>
+          <td>Category</td>
+          <td>Remove</td>
         </tr>
       </thead>
-      <tbody>
-        {books.map((book) => (
-          <Book
-            book={book}
-            key={book.bookId}
-            handleRemoveBook={(bookId) => handleRemoveBook(bookId)}
-          />
-        ))}
-      </tbody>
-    </>
+      {
+       books.map((book) => (
+         <Book
+           book={book}
+           key={book.bookId}
+           title={book.title}
+           category={book.category}
+           handleRemoveBook={(bookId) => handleRemoveBook(bookId)}
+         />
+       ))
+}
+    </table>
   );
 };
 
