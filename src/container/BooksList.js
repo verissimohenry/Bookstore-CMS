@@ -21,10 +21,6 @@ const BooksList = ({ books }) => (
   </table>
 );
 
-BooksList.defaultProps = {
-  bookId: [],
-};
-
-const mapStateToProps = (state) => ({ books: state.books, });
+const mapStateToProps = (state) => ({ books: state.books });
 
 export default connect(mapStateToProps)(BooksList);
