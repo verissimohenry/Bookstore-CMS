@@ -21,7 +21,7 @@ const BooksList = ({ books, filter, dispatch }) => {
     filteredBooks = books.map((book) => (
       <Book
         key={book.bookId}
-        bookId={book.bookId}
+        book={book}
         title={book.title}
         category={book.category}
         handleClick={handleRemoveBook}
