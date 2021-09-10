@@ -21,14 +21,15 @@ const BooksList = ({ books, filter, dispatch }) => {
     filteredBooks = books.map((book) => (
       <Book
         key={book.bookId}
-        book={book}
+        bookId={book.bookId}
         title={book.title}
         category={book.category}
         handleClick={handleRemoveBook}
       />
     ));
   } else {
-    filteredBooks = books.filter((book) => book.category === filter)
+    filteredBooks = books
+      .filter((book) => book.category === filter)
       .map((b) => (
         <Book
           key={b.bookId}
@@ -46,10 +47,9 @@ const BooksList = ({ books, filter, dispatch }) => {
       <table>
         <thead>
           <tr>
-            <th>BookId</th>
+            <th>Id</th>
             <th>Title</th>
             <th>Category</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>{filteredBooks}</tbody>
