@@ -6,76 +6,79 @@ import Book from '../components/Book';
 import { removeBook, changeFilter } from '../actions';
 import CategoryFilter from '../components/CategoryFilter';
 
-const BooksList = ({ books, filter, dispatch }) => {
-  const handleRemoveBook = ({ bookId }) => {
-    dispatch(removeBook(bookId));
+const BooksList = (props) => {
+  const {
+    books, removeBook, filterBook, filter1,
+  } = props;
+
+  const handleRemoveBook = (book) => {
+    removeBook(book);
   };
 
-  const handleFilterChange = (e) => {
-    dispatch(changeFilter(e.target.value));
+  const handleFilterChange = (filter) => {
+    filterBook(filter);
   };
-
-  let filteredBooks = '';
-
-  if (filter === 'All') {
-    filteredBooks = books.map((book) => (
-      <Book
-        key={book.bookId}
-        bookId={book.bookId}
-        title={book.title}
-        category={book.category}
-        handleClick={handleRemoveBook}
-      />
-    ));
-  } else {
-    filteredBooks = books
-      .filter((book) => book.category === filter)
-      .map((b) => (
-        <Book
-          key={b.bookId}
-          bookId={b.bookId}
-          title={b.title}
-          category={b.category}
-          handleClick={handleRemoveBook}
-        />
-      ));
-  }
 
   return (
     <div>
-      <CategoryFilter handleChange={handleFilterChange} />
+      <div>
+        <CategoryFilter filterChange={handleFilterChange} />
+        <div>
+          {filter1}
+        </div>
+      </div>
       <table>
         <thead>
           <tr>
-            <th>Id</th>
+            <th>BookId</th>
             <th>Title</th>
             <th>Category</th>
+            <th>Action</th>
           </tr>
         </thead>
-        <tbody>{filteredBooks}</tbody>
+        <tbody>
+          {
+            books.filter((book) => book.category === filter1 || filter1 === 'All' || filter1 === '').map((book) => (
+              <Book
+                book={book}
+                key={book.bookId}
+                title={book.title}
+                category={book.category}
+                handleRemoveBook={(bookId) => handleRemoveBook(bookId)}
+                filter={filter1}
+              />
+            ))
+          }
+        </tbody>
       </table>
     </div>
   );
 };
 
 BooksList.propTypes = {
-  books: PropTypes.arrayOf(
-    PropTypes.shape({
-      bookID: PropTypes.number,
-      title: PropTypes.string,
-      category: PropTypes.string,
-    }),
-  ),
-  filter: PropTypes.string,
-  dispatch: PropTypes.func.isRequired,
+  books: PropTypes.arrayOf(PropTypes.object),
+  removeBook: PropTypes.func.isRequired,
+  filterBook: PropTypes.func.isRequired,
+  filter1: PropTypes.string,
 };
 
 BooksList.defaultProps = {
   books: [],
-  filter: '',
+  filter1: '',
 };
 
-export default connect((state) => ({
-  books: state.bookReducer,
+const mapStateToProps = (state) => ({
+  books: state.bookReducer.books,
   filter: state.filterReducer,
-}))(BooksList);
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  removeBook: (book) => {
+    dispatch(removeBook(book));
+  },
+  filterBook: (filter) => {
+    dispatch(changeFilter(filter));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BooksList);
