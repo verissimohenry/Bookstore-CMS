@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -27,8 +28,7 @@ const BooksList = ({ books, filter, dispatch }) => {
       />
     ));
   } else {
-    filteredBooks = books
-      .filter((book) => book.category === filter)
+    filteredBooks = books.filter((book) => book.category === filter)
       .map((b) => (
         <Book
           key={b.bookId}
@@ -46,9 +46,10 @@ const BooksList = ({ books, filter, dispatch }) => {
       <table>
         <thead>
           <tr>
-            <th>Id</th>
+            <th>BookId</th>
             <th>Title</th>
             <th>Category</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>{filteredBooks}</tbody>
