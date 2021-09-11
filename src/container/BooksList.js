@@ -13,9 +13,8 @@ const BooksList = (props) => {
   };
 
   return (
-    <>
-      <main>
-        {
+    <main>
+      {
         books.filter((book) => book.category === filter1 || filter1 === 'All' || filter1 === '').map((book) => (
           <Book
             book={book}
@@ -24,8 +23,7 @@ const BooksList = (props) => {
           />
         ))
          }
-      </main>
-    </>
+    </main>
   );
 };
 
