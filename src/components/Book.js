@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import circle from '../styles/circle.png';
+import circle from '../circle.png';
 
 const Book = ({
   bookId, title, category, handleClick,
