@@ -1,64 +1,49 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
 import { removeBook, changeFilter } from '../actions';
 
-const BooksList = ({ books, filter, dispatch }) => {
-  const handleRemoveBook = ({ bookId }) => {
-    dispatch(removeBook(bookId));
+const BooksList = (props) => {
+  const {
+    books, removeBook, filter1,
+  } = props;
+  const handleRemoveBook = (book) => {
+    removeBook(book);
   };
 
-  let filteredBooks = '';
-
-  if (filter === 'All') {
-    filteredBooks = books.map((book) => (
-      <Book
-        key={book.bookId}
-        bookId={book.bookId}
-        title={book.title}
-        category={book.category}
-        handleClick={handleRemoveBook}
-      />
-    ));
-  } else {
-    filteredBooks = books
-      .filter((book) => book.category === filter)
-      .map((b) => (
-        <Book
-          key={b.bookId}
-          bookId={b.bookId}
-          title={b.title}
-          category={b.category}
-          handleClick={handleRemoveBook}
-        />
-      ));
-  }
-
   return (
-    <div>
-      <div>{filteredBooks}</div>
-    </div>
+    <>
+      <main>
+        {
+        books.filter((book) => book.category === filter1 || filter1 === 'All' || filter1 === '').map((book) => (
+          <Book
+            book={book}
+            key={book.bookId}
+            handleRemoveBook={(bookId) => handleRemoveBook(bookId)}
+          />
+        ))
+         }
+      </main>
+    </>
   );
 };
 
 BooksList.propTypes = {
-  books: PropTypes.arrayOf(
-    PropTypes.shape({
-      bookID: PropTypes.number,
-      title: PropTypes.string,
-      category: PropTypes.string,
-    }),
-  ),
-  filter: PropTypes.string,
-  dispatch: PropTypes.func.isRequired,
+  books: PropTypes.arrayOf(PropTypes.object),
+  removeBook: PropTypes.func.isRequired,
+  filter1: PropTypes.string,
 };
 
 BooksList.defaultProps = {
   books: [],
-  filter: '',
+  filter1: '',
 };
+
+const mapStateToProps = (state) => ({
+  books: state.books,
+  filter1: state.filter.filter,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   removeBook: (book) => {
@@ -69,4 +54,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapDispatchToProps)(BooksList);
+export default connect(mapStateToProps, mapDispatchToProps)(BooksList);
