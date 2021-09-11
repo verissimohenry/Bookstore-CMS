@@ -1,5 +1,5 @@
 import { CREATE_BOOK, REMOVE_BOOK } from '../reducers/booksReducer';
-import { CHANGE_FILTER } from '../reducers/filterReducer';
+import { CHANGE_FILTER } from '../reducers/filter';
 
 const createBook = (book) => ({
   type: CREATE_BOOK,
