@@ -36,7 +36,7 @@ header {
 }
 
 .header-left-links {
-  margin-left: 2em;
+  margin-left: 2rem;
 }
 
 .header-left-links .BOOKS {
@@ -70,6 +70,10 @@ header {
   color: var(--azure);
   margin-top: 1.8em;
   transform: scale(1.5);
+}
+
+.profile {
+  width: 7rem;
 }
 
 /* ------------BOOK ITEM------------------ */
