@@ -1,7 +1,7 @@
 import React from 'react';
-import profile from '../profile.png';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import profile from '../profile.png';
 import CategoryFilter from './CategoryFilter';
 import { changeFilter } from '../actions';
 
