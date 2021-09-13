@@ -4,13 +4,15 @@
 node_modules
 /.pnp
 .pnp.js
+.vscode/*
+!.vscode/launch.json
 
 # testing
 /coverage
 
 # production
 /build
-.vscode
+
 
 # misc
 .DS_Store
