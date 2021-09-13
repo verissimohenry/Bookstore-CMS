@@ -1,6 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import profile from '../profile.png';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryFilter from './CategoryFilter';
@@ -22,7 +21,7 @@ function Header(props) {
             <CategoryFilter filterChange={handleFilterChange} />
           </div>
         </div>
-        <div className="header-right"><FontAwesomeIcon icon={faUserCircle} /></div>
+        <img className="header-right" alt="header-right" src={profile} />
       </div>
     </header>
   );

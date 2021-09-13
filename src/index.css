@@ -66,11 +66,11 @@ header {
 }
 
 .header-right {
-  margin-right: 2em;
-  color: var(--azure);
-  margin-top: 1.8em;
-  transform: scale(1.5);
-}
+  width: 4%;
+  height: 5%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}  
 
 /* ------------BOOK ITEM------------------ */
 
