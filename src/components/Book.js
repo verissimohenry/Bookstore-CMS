@@ -1,38 +1,51 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Book = ({
-  bookId, title, category, handleClick,
-}) => (
-  <tr>
-    <td>{bookId}</td>
-    <td>{title}</td>
-    <td>{category}</td>
-    <td>
-      <button
-        type="button"
-        onClick={() => {
-          handleClick({ bookId, title, category });
-        }}
-      >
-        Remove Book
-      </button>
-    </td>
-  </tr>
+const Book = ({ book, handleRemoveBook }) => (
+  <div>
+    <div className="Lesson-Panel">
+      <div className="Lesson-Panel-left">
+        <div className="category">{book.category}</div>
+        <div className="title">{book.title}</div>
+        <div className="author">Author Name</div>
+        <div className="links">
+          <div className="link comments">Comments</div>
+          <div className="link remove">
+            <input
+              className="Remove"
+              type="submit"
+              onClick={() => handleRemoveBook(book)}
+              value="Remove"
+            />
+          </div>
+          <div className="link edit">Edit</div>
+        </div>
+      </div>
+
+      <div className="Lesson-Panel-middle">
+        <div className="progress-circle">
+          <div className="circle" />
+        </div>
+        <div className="progress-info">
+          <div className="progress-info-percentage">{`${Math.floor(Math.random() * 100)}%`}</div>
+          <div className="progress-info-status">Completed</div>
+        </div>
+      </div>
+
+      <div className="line" />
+
+      <div className="Lesson-Panel-right">
+        <div className="chapter">CURRENT CHAPTER</div>
+        <div className="chapter-number">Chapter 17</div>
+        <div className="chapter-progress-button">UPDATE CHAPTER</div>
+      </div>
+    </div>
+  </div>
 );
 
 Book.propTypes = {
-  handleClick: PropTypes.func,
-  book: PropTypes.shape({
-    bookId: PropTypes.number,
-    title: PropTypes.string,
-    category: PropTypes.string,
-  }),
-};
-Book.defaultProps = {
-  book: null,
-  handleClick: null,
+  book: PropTypes.objectOf(PropTypes.string).isRequired,
+  handleRemoveBook: PropTypes.func.isRequired,
 };
 
 export default Book;

@@ -1,23 +1,22 @@
-import { CREATE_BOOK, REMOVE_BOOK } from '../reducers/booksReducer';
-import { CHANGE_FILTER } from '../reducers/filterReducer';
+import * as actions from './booksActions';
 
-const createBook = (book) => ({
-  type: CREATE_BOOK,
-  book: {
-    bookId: Math.floor(Math.random() * 20),
-    title: book.title,
-    category: book.category,
-  },
-});
+export const createBook = (book) => (
+  {
+    type: actions.CREATE_BOOK,
+    payload: book,
+  }
+);
 
-const removeBook = (book) => ({
-  type: REMOVE_BOOK,
-  book,
-});
+export const removeBook = (book) => (
+  {
+    type: actions.REMOVE_BOOK,
+    payload: book,
+  }
+);
 
-const changeFilter = (filter) => ({
-  type: CHANGE_FILTER,
-  filter,
-});
-
-export { createBook, removeBook, changeFilter };
+export const changeFilter = (filter) => (
+  {
+    type: actions.CHANGE_FILTER,
+    payload: filter,
+  }
+);
